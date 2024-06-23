@@ -1,0 +1,1 @@
+ Ec-management é o painel de administração de um sistema de e-commerce, desenvolvido utilizando Blazor. Este painel permite aos administradores gerenciar diversas funcionalidades do e-commerce, como pagamentos, usuários e outros aspectos essenciais do negócio.

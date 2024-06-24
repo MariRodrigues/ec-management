@@ -1,0 +1,28 @@
+﻿@page "/Produtos"
+
+@inject EcommerceAPI ecommerceApi
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h3>Produtos</h3>
+
+    <TabelaProdutos Produtos="produtos"></TabelaProdutos>
+
+    <div class="button-container">
+        <button @onclick="CadastrarNovaCategoria">Cadastrar novo produto</button>
+    </div>
+</div>
+
+@code {
+    private IEnumerable<ProdutoViewModel> produtos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        produtos = await ecommerceApi.GetProductsAsync();
+    }
+
+    private void CadastrarNovaCategoria()
+    {
+        NavigationManager.NavigateTo("/CadastrarProduto");
+    }
+}

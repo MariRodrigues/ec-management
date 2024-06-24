@@ -1,0 +1,63 @@
+﻿/* Estilo para o contêiner */
+.container {
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    background-color: #ffffff; /* Cor de fundo */
+    margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+    padding: 20px; /* Espaçamento interno */
+    min-height: 100vh; /* Altura mínima de 100% da altura da viewport */
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Disposição em coluna */
+}
+
+/* Estilo para o título h3 */
+h3 {
+    color: #333; /* Cor do texto */
+    font-size: 24px; /* Tamanho da fonte */
+}
+
+
+/* Estilo para o formulário */
+.product-form {
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Disposição em coluna */
+}
+
+/* Estilo para os grupos de formulário */
+.form-group {
+    margin-bottom: 15px; /* Espaço abaixo dos grupos */
+}
+
+/* Estilo para os rótulos */
+label {
+    font-weight: bold; /* Texto em negrito */
+    margin-bottom: 5px; /* Espaço abaixo do rótulo */
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 5px; /* Espaço acima do campo */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Cantos arredondados */
+    box-sizing: border-box; /* Inclui borda e padding na largura total */
+}
+/* Estilo para o botão */
+button {
+    padding: 10px 20px; /* Espaçamento interno */
+    background-color: #0289d1; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remove bordas */
+    border-radius: 5px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor ao passar o mouse */
+    font-size: 16px; /* Tamanho da fonte */
+    margin-top: 20px; /* Espaço acima do botão */
+    align-self: center; /* Centraliza o botão */
+}
+
+    button:hover {
+        background-color: #027aba; /* Cor de fundo ao passar o mouse */
+    }

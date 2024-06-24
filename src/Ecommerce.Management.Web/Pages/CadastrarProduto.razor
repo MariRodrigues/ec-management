@@ -1,0 +1,88 @@
+﻿@page "/CadastrarProduto"
+
+@inject EcommerceAPI EcommerceApi
+@inject NavigationManager NavigationManager
+
+
+<div class="container">
+    <h3>Cadastrar Produto</h3>
+    <Divider></Divider>
+    <form class="product-form">
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" @bind="name" placeholder="Nome do Produto" required />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descrição:</label>
+            <textarea id="description" @bind="description" placeholder="Descrição do Produto" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="value">Valor:</label>
+            <input type="number" id="value" @bind="value" placeholder="Valor do Produto" required />
+        </div>
+
+        <div class="form-group">
+            <label for="subcategory">Subcategoria:</label>
+            <select id="subcategory" @bind="subcategoryId" required>
+                <option value="">Selecione uma subcategoria</option>
+                @foreach (var subcategoria in subcategorias)
+                {
+                    <option value="@subcategoria.Id">@subcategoria.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" @bind="quantity" placeholder="Quantidade em Estoque" required />
+        </div>
+
+        <div class="form-group">
+            <label for="images">Imagens (URL):</label>
+            <input type="text" id="images" @bind="image" placeholder="URL da Imagem" required />
+        </div>
+
+        <div class="button-container">
+            <button @onclick="CadastrarProdutoAsync">Cadastrar produto</button>
+        </div>
+    </form>
+</div>
+
+@code {
+    private string name;
+    private string description;
+    private double value;
+    private int subcategoryId;
+    private int quantity;
+    private string image;
+    private int size;
+    private int sizeQuantity;
+
+    private List<SubcategoriaViewModel> subcategorias = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        subcategorias = await EcommerceApi.GetSubcategoriesAsync();
+    }
+
+    private async Task CadastrarProdutoAsync()
+    {
+        List<string> images = new();
+        images.Add(image);
+
+        var produto = new CreateProductRequest()
+            {
+                Name = name,
+                Description = description,
+                Value = value,
+                SubcategoryId = subcategoryId,
+                Quantity = quantity,
+                Images = images
+            };
+
+        await EcommerceApi.CadastrarProdutoAsync(produto);
+        NavigationManager.NavigateTo("/Produtos", forceLoad: true);
+    }
+}

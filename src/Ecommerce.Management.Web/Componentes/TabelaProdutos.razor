@@ -1,0 +1,43 @@
+﻿@using Ecommerce.Management.Web.Services
+@using Ecommerce.Management.Web.ViewModels
+
+<div class="table-container">
+    @if (Produtos == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Status</th>
+                    <th>Valor</th>
+                    <th>Criado em</th>
+                </tr>
+            </thead>
+            @foreach (var produto in Produtos)
+            {
+                <tbody>
+                    <tr>
+                        <td>@produto.Id</td>
+                        <td>@produto.Name</td>
+                        <td>@produto.Quantity</td>
+                        <td>@produto.Status</td>
+                        <td>R$ @produto.Value</td>
+                        <td>@produto.CreatedOn</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+
+    }
+</div>
+
+@code {
+    [Parameter]
+    public IEnumerable<ProdutoViewModel> Produtos { get; set; }
+}
